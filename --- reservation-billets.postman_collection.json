@@ -1,0 +1,1136 @@
+{
+	"info": {
+		"_postman_id": "25e34cf5-ad79-47be-8957-ac2f40e79b49",
+		"name": "--- reservation-billets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9411575"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "POST /auth/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN\", data.data.token.accessToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \"password\": \"user111\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /auth/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN\", data.data.token.accessToken);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \r\n    \"password\": \"user111\", \r\n    \"firstName\": \"aziz\", \r\n    \"lastName\": \"masmoudi\", \r\n    \"tel\": \"+216545123\" \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/auth/forgot-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"email\":\"mouhamed.aziz.masmoudi@gmail.com\" }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/auth/forgot-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /v1/auth/verify-account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/auth/verify-account/63d7e576bffcc2214c986438.ee176f016ebb7f7ddf37ead6162bdb78c22c8c3fcf6a7cc05b58b2f2ab61ac6f397309f3430b20be",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"verify-account",
+								"63d7e576bffcc2214c986438.ee176f016ebb7f7ddf37ead6162bdb78c22c8c3fcf6a7cc05b58b2f2ab61ac6f397309f3430b20be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /reset password",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"password\": \"etudiant111\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/users/63cd666b8291f823bcd45cfd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"63cd666b8291f823bcd45cfd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "GET /profile",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/users/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /USERID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \r\n    \"password\": \"user111\", \r\n    \"firstName\": \"aziz\", \r\n    \"lastName\": \"masmoudi\", \r\n    \"tel\": \"+216545123\" \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/users/641371f4d149f41990b3c6ce",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"641371f4d149f41990b3c6ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /USERID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/users/63a87077061a750c4c26a5b3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"63a87077061a750c4c26a5b3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sieges",
+			"item": [
+				{
+					"name": "Get sieges",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create sieges",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"traject\":\"63dff7ec8a560a34e4a7814c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /siegeID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"traject\":\"63dff7ec8a560a34e4a7814c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /siegeID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /siegeID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trajects",
+			"item": [
+				{
+					"name": "Get trajects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/trajects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"trajects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create traject",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/trajects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"trajects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /trajectID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/trajects/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"trajects",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /trajectID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/trajects/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"trajects",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /trajectID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/trajects/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"trajects",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "billets",
+			"item": [
+				{
+					"name": "Get billets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create billet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"traject\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"type\": \"normal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /billetID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"traject\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"type\": \"normal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/6413a76cd3cdc73b500fe508",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"6413a76cd3cdc73b500fe508"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /billetID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /billetID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/6413a76cd3cdc73b500fe508",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"6413a76cd3cdc73b500fe508"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reservationBillets",
+			"item": [
+				{
+					"name": "Get reservationBillets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create reservationBillet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"billet\": \"63dfe8cdaa389e06f8cfb613\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH /reservationBilletID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"status\":\"canceled\",\r\n    \"billet\": \"63dfe8cdaa389e06f8cfb613\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/6413a808b2c6b03cb8e2b33d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"6413a808b2c6b03cb8e2b33d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE /reservationBilletID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /reservationBilletID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"64139ca657976f394c2eba00"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET /USERID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3009/api/v1/users/641371f4d149f41990b3c6ce",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3009",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"641371f4d149f41990b3c6ce"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3009/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3009",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /v1/users/sendEmail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"email\":\"mouhamed.aziz.masmoudi@gmail.com\", \"content\":\"content\",\"object\":\"object\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3009/api/v1/users/sendEmail",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3009",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"sendEmail"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

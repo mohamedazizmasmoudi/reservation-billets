@@ -1,0 +1,7 @@
+Dear {{name}},
+Below is your verification link.
+
+{{tempPass}}
+
+Regards,
+Team
