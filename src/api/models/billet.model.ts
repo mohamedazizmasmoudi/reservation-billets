@@ -1,21 +1,27 @@
-export { };
+export {};
 const mongoose = require('mongoose');
 import { transformData, listData } from '../utils/ModelUtils';
 const APIError = require('../../api/utils/APIError');
 const httpStatus = require('http-status');
 
+const status = ['reserved', 'open'];
 const types = ['vip', 'normal'];
 const BilletSchema = new mongoose.Schema(
   {
     type: {
       type: String,
-      enum: types,
+      enum: types
+    },
+    status: {
+      type: String,
+      enum: status,
+      default: 'open'
     },
     traject: { type: mongoose.Schema.Types.ObjectId, ref: 'Traject' }
   },
   { timestamps: true }
 );
-const ALLOWED_FIELDS = ['id', 'type', 'traject', 'createdAt'];
+const ALLOWED_FIELDS = ['id', 'type', 'status', 'traject', 'createdAt'];
 
 BilletSchema.method({
   // query is optional, e.g. to transform data for response but only include certain "fields"
@@ -32,7 +38,6 @@ BilletSchema.statics = {
 
       if (mongoose.Types.ObjectId.isValid(id)) {
         data = await this.findById(id).exec();
-
       }
       if (data) {
         return data;

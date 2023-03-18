@@ -18,7 +18,29 @@ exports.load = async (req: Request, res: Response, next: NextFunction, id: any) 
   }
 };
 
+exports.getByTrajectOpen = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    req.query.status = 'open';
+    req.query.traject = req.params.traject;
 
+    const data = (await Billet.list(req)).transform(req);
+
+    apiJson({ req, res, data, model: Billet });
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+};
+exports.getByTrajectReserved = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    req.query.status = 'reserved';
+    req.query.traject = req.params.traject;
+
+    const data = (await Billet.list(req)).transform(req);
+    apiJson({ req, res, data, model: Billet });
+  } catch (error) {
+    return errorHandler(error, req, res);
+  }
+};
 exports.create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const billet = new Billet({ ...req.body });
@@ -30,7 +52,6 @@ exports.create = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
 exports.update = (req: Request, res: Response, next: NextFunction) => {
   const billet = Object.assign(req.route.meta.billet, req.body);
 
@@ -40,7 +61,6 @@ exports.update = (req: Request, res: Response, next: NextFunction) => {
     .catch((e: any) => next(e));
 };
 
-
 exports.list = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const data = (await Billet.list(req)).transform(req);
@@ -49,7 +69,15 @@ exports.list = async (req: Request, res: Response, next: NextFunction) => {
     next(e);
   }
 };
-
+exports.listOpen = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    req.query.status = 'open';
+    const data = (await Billet.list(req)).transform(req);
+    apiJson({ req, res, data, model: Billet });
+  } catch (e) {
+    next(e);
+  }
+};
 exports.get = async (req: Request, res: Response, next: NextFunction) => {
   res.json(req.route.meta.billet);
 };

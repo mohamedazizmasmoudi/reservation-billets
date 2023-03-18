@@ -18,7 +18,6 @@ exports.load = async (req: Request, res: Response, next: NextFunction, id: any) 
   }
 };
 
-
 exports.create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const siege = new Siege({ ...req.body });
@@ -30,7 +29,6 @@ exports.create = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-
 exports.update = (req: Request, res: Response, next: NextFunction) => {
   const siege = Object.assign(req.route.meta.siege, req.body);
 
@@ -40,11 +38,34 @@ exports.update = (req: Request, res: Response, next: NextFunction) => {
     .catch((e: any) => next(e));
 };
 
-
 exports.list = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const data = (await Siege.list(req)).transform(req);
     apiJson({ req, res, data, model: Siege });
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.listWithTrajects = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const data = await Siege.aggregate([
+      {
+        $lookup: {
+          from: 'trajects',
+          localField: 'restaurant_name',
+          foreignField: 'name',
+          let: { id: '$_id' },
+          pipeline: [{ $match: { $expr: { $in: ['$$id', '$sieges'] } } }],
+          as: 'trajects'
+        }
+      },
+      {
+        $addFields: { 'trajectsNumber ': { $size: '$trajects' } }
+      }
+    ]).allowDiskUse(true);
+    res.status(httpStatus.CREATED);
+    res.json(data);
   } catch (e) {
     next(e);
   }

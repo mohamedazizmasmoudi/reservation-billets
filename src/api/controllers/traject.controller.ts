@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const ObjectId = mongoose.Types.ObjectId;
 const httpStatus = require('http-status');
 const { omit } = require('lodash');
-import { Traject } from '../models';
+import { Billet, Traject } from '../models';
 import { apiJson } from '../utils/Utils';
 const { handler: errorHandler } = require('../middlewares/error');
 
@@ -18,18 +18,26 @@ exports.load = async (req: Request, res: Response, next: NextFunction, id: any) 
   }
 };
 
-
 exports.create = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const traject = new Traject({ ...req.body });
     const savedTraject = await traject.save();
+    for (let index = 0; index < req.body.numberBilletNormal; index++) {
+      const data = { traject: savedTraject._id, type: 'normal' };
+      const billet = new Billet({ ...data });
+      const savedBillet = await billet.save();
+    }
+    for (let index = 0; index < req.body.numberBilletVIP; index++) {
+      const data = { traject: savedTraject._id, type: 'vip' };
+      const billet = new Billet({ ...data });
+      const savedBillet = await billet.save();
+    }
     res.status(httpStatus.CREATED);
     res.json(savedTraject.transform());
   } catch (error) {
     next(error);
   }
 };
-
 
 exports.update = (req: Request, res: Response, next: NextFunction) => {
   const traject = Object.assign(req.route.meta.traject, req.body);
@@ -39,7 +47,6 @@ exports.update = (req: Request, res: Response, next: NextFunction) => {
     .then((savedTraject: any) => res.json(savedTraject.transform()))
     .catch((e: any) => next(e));
 };
-
 
 exports.list = async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -29,7 +29,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \"password\": \"user111\" }",
+							"raw": "{ \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \"password\": \"b3wagkupnb\" }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -174,7 +174,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3009/api/v1/auth/verify-account/63d7e576bffcc2214c986438.ee176f016ebb7f7ddf37ead6162bdb78c22c8c3fcf6a7cc05b58b2f2ab61ac6f397309f3430b20be",
+							"raw": "http://localhost:3009/api/v1/auth/verify-account/641371f4d149f41990b3c6ce.ee15c3220a1a216c90f1c8411ec895cea6163fa00f405b1b5c12125f955b0505084897636062d00f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -185,7 +185,7 @@
 								"v1",
 								"auth",
 								"verify-account",
-								"63d7e576bffcc2214c986438.ee176f016ebb7f7ddf37ead6162bdb78c22c8c3fcf6a7cc05b58b2f2ab61ac6f397309f3430b20be"
+								"641371f4d149f41990b3c6ce.ee15c3220a1a216c90f1c8411ec895cea6163fa00f405b1b5c12125f955b0505084897636062d00f"
 							]
 						}
 					},
@@ -207,7 +207,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"password\": \"etudiant111\"\r\n    \r\n}",
+							"raw": "{ \r\n    \"password\": \"b3wagkupnb\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -215,7 +215,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3009/api/v1/users/63cd666b8291f823bcd45cfd",
+							"raw": "http://localhost:3009/api/v1/users/641371f4d149f41990b3c6ce",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -225,7 +225,7 @@
 								"api",
 								"v1",
 								"users",
-								"63cd666b8291f823bcd45cfd"
+								"641371f4d149f41990b3c6ce"
 							]
 						}
 					},
@@ -283,7 +283,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \r\n    \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \r\n    \"password\": \"user111\", \r\n    \"firstName\": \"aziz\", \r\n    \"lastName\": \"masmoudi\", \r\n    \"tel\": \"+216545123\" \r\n    }",
+							"raw": "{ \r\n    \"email\": \"mouhamed.aziz.masmoudi@gmail.com\", \r\n    \"firstName\": \"aziz11\", \r\n    \"lastName\": \"masmoudi\", \r\n    \"tel\": \"+216545123\" \r\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -383,7 +383,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"traject\":\"63dff7ec8a560a34e4a7814c\"\r\n}",
+							"raw": "{\r\n    \"nom\":\"siege\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -422,7 +422,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"traject\":\"63dff7ec8a560a34e4a7814c\"\r\n}",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -430,7 +430,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3009/api/v1/sieges/64139ca657976f394c2eba00",
+							"raw": "http://localhost:3009/api/v1/sieges/64150156d1ad3118401ebe3f",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -440,7 +440,7 @@
 								"api",
 								"v1",
 								"sieges",
-								"64139ca657976f394c2eba00"
+								"64150156d1ad3118401ebe3f"
 							]
 						}
 					},
@@ -507,6 +507,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get listWithTrajects",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/sieges/listWithTrajects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"sieges",
+								"listWithTrajects"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -553,7 +581,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\"\r\n}",
+							"raw": "{\r\n    \"nom\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"numberBilletNormal\" : 10,\r\n    \"numberBilletVIP\": 10,\r\n    \"sieges\":[\"6414eef568b5243bb0e25ba7\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -631,7 +659,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3009/api/v1/trajects/64139ca657976f394c2eba00",
+							"raw": "http://localhost:3009/api/v1/trajects/6414c560edd398144826bc2b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -641,7 +669,7 @@
 								"api",
 								"v1",
 								"trajects",
-								"64139ca657976f394c2eba00"
+								"6414c560edd398144826bc2b"
 							]
 						}
 					},
@@ -705,6 +733,92 @@
 								"api",
 								"v1",
 								"billets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get disponible  billets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/open",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"open"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get disponible  billets By trajectID Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/open/6414c5af7708232fc4579dbb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"open",
+								"6414c5af7708232fc4579dbb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get reserved billets by trajectId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/billets/reserved/6414c5af7708232fc4579dbb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"billets",
+								"reserved",
+								"6414c5af7708232fc4579dbb"
 							]
 						}
 					},
@@ -832,7 +946,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3009/api/v1/billets/6413a76cd3cdc73b500fe508",
+							"raw": "http://localhost:3009/api/v1/billets/6414c5af7708232fc4579ddd",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -842,7 +956,7 @@
 								"api",
 								"v1",
 								"billets",
-								"6413a76cd3cdc73b500fe508"
+								"6414c5af7708232fc4579ddd"
 							]
 						}
 					},
@@ -893,7 +1007,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"billet\": \"63dfe8cdaa389e06f8cfb613\"\r\n\r\n}",
+							"raw": "{\r\n    \"user\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"billet\": \"6414c5af7708232fc4579ddd\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -917,7 +1031,50 @@
 					"response": []
 				},
 				{
-					"name": "PATCH /reservationBilletID",
+					"name": "POST /v1/auth/verify-account Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/verify-reservation/641371f4d149f41990b3c6ce.f669a6ffd871207a682dabff32fef0cd456faebd6f9b6256c2995c67a799b0697c37127b296d3c24",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"verify-reservation",
+								"641371f4d149f41990b3c6ce.f669a6ffd871207a682dabff32fef0cd456faebd6f9b6256c2995c67a799b0697c37127b296d3c24"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "annuler /reservationBilletID",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -932,7 +1089,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\":\"63dfe8cdaa389e06f8cfb613\",\r\n    \"status\":\"canceled\",\r\n    \"billet\": \"63dfe8cdaa389e06f8cfb613\"\r\n\r\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -940,7 +1097,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3009/api/v1/reservationBillets/6413a808b2c6b03cb8e2b33d",
+							"raw": "http://localhost:3009/api/v1/reservationBillets/cancel/6414f842ea744d2090becc0c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -950,7 +1107,82 @@
 								"api",
 								"v1",
 								"reservationBillets",
-								"6413a808b2c6b03cb8e2b33d"
+								"cancel",
+								"6414f842ea744d2090becc0c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST verify Cancel Reservation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/verify-cancel-reservation/641371f4d149f41990b3c6ce.bec8f0bea67c10e24272222084e83b31261927713fa67b82406f39589d1afd7cd245e313c98d52ec",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"verify-cancel-reservation",
+								"641371f4d149f41990b3c6ce.bec8f0bea67c10e24272222084e83b31261927713fa67b82406f39589d1afd7cd245e313c98d52ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /reservationBilletID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3009/api/v1/reservationBillets/64139ca657976f394c2eba00",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3009",
+							"path": [
+								"api",
+								"v1",
+								"reservationBillets",
+								"64139ca657976f394c2eba00"
 							]
 						}
 					},
@@ -988,12 +1220,12 @@
 					"response": []
 				},
 				{
-					"name": "GET /reservationBilletID",
+					"name": "PATCH /reservationBilletID Copy",
 					"request": {
 						"auth": {
 							"type": "noauth"
 						},
-						"method": "GET",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "Authorization",
@@ -1001,8 +1233,17 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"canceled\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3009/api/v1/reservationBillets/64139ca657976f394c2eba00",
+							"raw": "http://localhost:3009/api/v1/reservationBillets/6413a808b2c6b03cb8e2b33d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1012,7 +1253,7 @@
 								"api",
 								"v1",
 								"reservationBillets",
-								"64139ca657976f394c2eba00"
+								"6413a808b2c6b03cb8e2b33d"
 							]
 						}
 					},

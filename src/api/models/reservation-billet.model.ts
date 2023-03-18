@@ -1,4 +1,4 @@
-export { };
+export {};
 const mongoose = require('mongoose');
 import { transformData, listData } from '../utils/ModelUtils';
 const APIError = require('../../api/utils/APIError');
@@ -12,12 +12,19 @@ const ReservationBilletSchema = new mongoose.Schema(
       enum: status,
       default: 'activated'
     },
+    verifyToken: {
+      type: String
+    },
+    verified: {
+      type: Boolean,
+      default: false
+    },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     billet: { type: mongoose.Schema.Types.ObjectId, ref: 'Billet' }
   },
   { timestamps: true }
 );
-const ALLOWED_FIELDS = ['id', 'status', 'User', 'Billet', 'createdAt'];
+const ALLOWED_FIELDS = ['id', 'status', 'user', 'billet', 'verified', 'createdAt'];
 
 ReservationBilletSchema.method({
   // query is optional, e.g. to transform data for response but only include certain "fields"
@@ -34,7 +41,6 @@ ReservationBilletSchema.statics = {
 
       if (mongoose.Types.ObjectId.isValid(id)) {
         data = await this.findById(id).exec();
-
       }
       if (data) {
         return data;

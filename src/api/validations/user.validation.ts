@@ -1,4 +1,4 @@
-export { };
+export {};
 import * as Joi from 'joi';
 import { User } from '../../api/models';
 
@@ -8,7 +8,7 @@ const postPutBody = () => {
   return {
     email: requireEmail(),
     password: Joi.string().min(6).max(128).required(),
-    name: Joi.string().max(128),
+    name: Joi.string().max(128)
     // role: Joi.string().valid(User.roles)
   };
 };
@@ -32,27 +32,6 @@ module.exports = {
   createUser: {
     body: postPutBody()
   },
-
-  // PUT /v1/users/:userId
-  replaceUser: {
-    body: postPutBody(),
-    params: {
-      userId: Joi.string()
-        .regex(/^[a-fA-F0-9]{24}$/)
-        .required()
-    }
-  },
-  createAdmin: {
-    body: {
-      nom: Joi.string(),
-      email: Joi.string()
-        .email()
-        .required(),
-
-      tel: Joi.string().max(10)
-    },
-  },
-
 
   // PATCH /v1/users/:userId
   updateUser: {

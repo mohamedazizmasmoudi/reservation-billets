@@ -5,9 +5,7 @@ const httpStatus = require('http-status');
 
 const SiegeSchema = new mongoose.Schema(
   {
-    nom: { type: String, default: '' },
-    traject: { type: mongoose.Schema.Types.ObjectId, ref: 'Traject' }
-
+    nom: { type: String, default: '' }
   },
   { timestamps: true }
 );
@@ -22,14 +20,12 @@ SiegeSchema.method({
 });
 
 SiegeSchema.statics = {
-
   async get(id: any) {
     try {
       let data;
 
       if (mongoose.Types.ObjectId.isValid(id)) {
         data = await this.findById(id).exec();
-
       }
       if (data) {
         return data;

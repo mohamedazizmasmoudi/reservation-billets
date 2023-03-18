@@ -41,7 +41,17 @@ export function forgotPasswordEmail({ name, email, tempPass }: { name: string; e
     html: template('forgot-password.html', { name, email, tempPass })
   };
 }
-export function customEmail({ name, email, content, object }: { name: string; email: string; content: string; object: string }) {
+export function customEmail({
+  name,
+  email,
+  content,
+  object
+}: {
+  name: string;
+  email: string;
+  content: string;
+  object: string;
+}) {
   return {
     from: EMAIL_NODEMAILER,
     to: `${name} <${email}>`,
@@ -56,6 +66,32 @@ export function verifyYourAccount({ name, email, tempPass }: { name: string; ema
     from: EMAIL_NODEMAILER,
     to: `${name} <${email}>`,
     subject: `verify Your Account`,
+    text: template('verify-account.txt', { name, email, tempPass }),
+    html: template('verify-account.html', { name, email, tempPass })
+  };
+}
+export function verifyReserveBillet({ name, email, tempPass }: { name: string; email: string; tempPass: string }) {
+  return {
+    from: EMAIL_NODEMAILER,
+    to: `${name} <${email}>`,
+    subject: `verify Your Reservation`,
+    text: template('verify-account.txt', { name, email, tempPass }),
+    html: template('verify-account.html', { name, email, tempPass })
+  };
+}
+export function verifyCancelReservationBillet({
+  name,
+  email,
+  tempPass
+}: {
+  name: string;
+  email: string;
+  tempPass: string;
+}) {
+  return {
+    from: EMAIL_NODEMAILER,
+    to: `${name} <${email}>`,
+    subject: `verify Your cancel Reservation`,
     text: template('verify-account.txt', { name, email, tempPass }),
     html: template('verify-account.html', { name, email, tempPass })
   };
@@ -82,12 +118,12 @@ export function sendEmail(data: any) {
   return new Promise((resolve, reject) => {
     emailClient
       ? emailClient.sendMail(data, (err: any, info: any) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(info);
-        }
-      })
+          if (err) {
+            reject(err);
+          } else {
+            resolve(info);
+          }
+        })
       : '';
   });
 }

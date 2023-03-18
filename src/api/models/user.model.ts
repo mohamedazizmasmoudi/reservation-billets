@@ -1,4 +1,4 @@
-export { };
+export {};
 import { NextFunction } from 'express';
 const mongoose = require('mongoose');
 const httpStatus = require('http-status');
@@ -35,6 +35,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 6,
       maxlength: 128
+    },
+    name: {
+      type: String,
+      maxlength: 128,
+      index: true,
+      trim: true
     },
     firstName: {
       type: String,
@@ -75,7 +81,7 @@ const userSchema = new mongoose.Schema(
     },
     pays: {
       type: String
-    },
+    }
   },
   {
     timestamps: true

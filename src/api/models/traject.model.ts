@@ -7,11 +7,11 @@ const httpStatus = require('http-status');
 const TrajectSchema = new mongoose.Schema(
   {
     nom: { type: String, default: '' },
-
+    sieges: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Siege' }]
   },
   { timestamps: true }
 );
-const ALLOWED_FIELDS = ['id', 'nom', 'logo', 'description', 'qrCode', 'pays', 'cover', 'address', 'createdAt'];
+const ALLOWED_FIELDS = ['id', 'nom', 'sieges', 'createdAt'];
 
 TrajectSchema.method({
   // query is optional, e.g. to transform data for response but only include certain "fields"
